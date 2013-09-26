@@ -98,7 +98,6 @@
                     <reportSet>
                         <reports>
                             <report>pmd</report>
-                            <report>cpd</report>
                         </reports>
                     </reportSet>
                 </reportSets>
