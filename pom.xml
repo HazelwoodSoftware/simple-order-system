@@ -144,11 +144,29 @@
                 <plugin>
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>2.10</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>au.id.hazelwood</groupId>
+                            <artifactId>simple-order-system-build-config</artifactId>
+                            <version>${project.version}</version>
+                        </dependency>
+                    </dependencies>
                     <configuration>
                         <encoding>UTF-8</encoding>
-                        <consoleOutput>false</consoleOutput>
+                        <consoleOutput>true</consoleOutput>
                         <linkXRef>false</linkXRef>
+                        <configLocation>au/id/hazelwood/sos/checkstyle-config.xml</configLocation>
+                        <headerLocation>au/id/hazelwood/sos/checkstyle-header.txt</headerLocation>
+                        <suppressionsLocation>${basedir}/build-config/checkstyle-suppressions.xml</suppressionsLocation>
+                        <propertyExpansion>checkstyle.import.control.file=${basedir}/build-config/checkstyle-import-control.xml</propertyExpansion>
                     </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <artifactId>maven-pmd-plugin</artifactId>
@@ -376,6 +394,7 @@
     </dependencyManagement>
 
     <modules>
+        <module>simple-order-system-build-config</module>
         <module>simple-order-system-contract</module>
     </modules>
 
