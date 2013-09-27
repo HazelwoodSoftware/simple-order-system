@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <title>Coverage Report</title>
+    </properties>
+    <body>
+        <iframe src="cobertura/index.html" name="content" width="95%" height="595" marginwidth="0" marginheight="0" frameborder="1"/>
+    </body>
+</document>

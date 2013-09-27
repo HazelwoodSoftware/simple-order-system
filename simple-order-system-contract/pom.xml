@@ -32,19 +32,40 @@
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
             <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>cobertura-instrument</id>
+                        <phase>test-compile</phase>
+                    </execution>
+                    <execution>
+                        <id>cobertura-check</id>
+                        <phase>test</phase>
+                    </execution>
+                    <execution>
+                        <id>cobertura-report</id>
+                        <phase>site</phase>
+                    </execution>
+                    <execution>
+                        <id>cobertura-aggregate-report</id>
+                        <phase>site</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
             </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
             </plugin>
             <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
             <plugin>
                 <artifactId>maven-pmd-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
             </plugin>
             <plugin>
                 <artifactId>maven-install-plugin</artifactId>
@@ -250,6 +271,10 @@
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.cobertura</groupId>
+            <artifactId>cobertura</artifactId>
         </dependency>
     </dependencies>
 

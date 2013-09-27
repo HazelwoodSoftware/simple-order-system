@@ -32,10 +32,11 @@
                 <item name="Plugins" href="plugins.html"/>
             </item>
             <item name="Project Reports" href="project-reports.html">
+                <item name="Surefire Report" href="surefire-report.html"/>
+                <item name="Coverage Report" href="cobertura-report.html"/>
                 <item name="Checkstyle Report" href="checkstyle.html"/>
                 <item name="PMD Report" href="pmd.html"/>
                 <item name="JDepends Report" href="jdepend-report.html"/>
-                <item name="Surefire Report" href="surefire-report.html"/>
             </item>
         </menu>
     </body>

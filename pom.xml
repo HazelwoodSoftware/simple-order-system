@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress MavenModelInspection -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -116,14 +117,119 @@
                     <version>2.16</version>
                     <configuration>
                         <useSystemClassLoader>false</useSystemClassLoader>
+                        <classesDirectory>${project.build.directory}/instrumented-classes</classesDirectory>
+                        <argLine>-Dnet.sourceforge.cobertura.datafile="${project.build.directory}/cobertura.ser"</argLine>
                     </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-report-plugin</artifactId>
                     <version>2.16</version>
-                    <configuration>
-                        <linkXRef>false</linkXRef>
-                    </configuration>
+                </plugin>
+                <!-- Code Coverage Plugins -->
+                <plugin>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>1.7</version>
+                    <executions>
+                        <execution>
+                            <id>cobertura-instrument</id>
+                            <configuration>
+                                <target name="cobertura-instrument" unless="skipTests"
+                                        description="Instrument main classes and copy all resources from complied dir to instrumented dir">
+                                    <!-- Load Cobertura Tasks -->
+                                    <typedef resource="tasks.properties"/>
+
+                                    <property name="cobertura.datafile" value="${project.build.directory}/cobertura.ser"/>
+                                    <property name="instrumented.output.directory" value="${project.build.directory}/instrumented-classes"/>
+
+                                    <delete file="${cobertura.datafile}"/>
+                                    <cobertura-instrument todir="${instrumented.output.directory}" datafile="${cobertura.datafile}">
+                                        <fileset dir="${project.build.outputDirectory}"/>
+                                    </cobertura-instrument>
+                                    <copy todir="${instrumented.output.directory}">
+                                        <fileset dir="${project.build.outputDirectory}" excludes="**/*.classes"/>
+                                    </copy>
+                                </target>
+                            </configuration>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>cobertura-check</id>
+                            <configuration>
+                                <target name="cobertura-check" unless="skipTests" description="Verify test coverage level for all files">
+                                    <!-- Load Cobertura Tasks -->
+                                    <typedef resource="tasks.properties"/>
+
+                                    <property name="cobertura.datafile" value="${project.build.directory}/cobertura.ser"/>
+
+                                    <cobertura-check branchrate="95" linerate="95" totalbranchrate="95" totallinerate="95"
+                                                     datafile="${cobertura.datafile}">
+                                        <!--<regex pattern="au.id.hazelwood.sos" branchrate="50" linerate="50"/>-->
+                                    </cobertura-check>
+                                </target>
+                            </configuration>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>cobertura-report</id>
+                            <configuration>
+                                <target name="cobertura-report" unless="skipTests" description="Generate html report to highlight test coverage">
+                                    <!-- Load Cobertura Tasks -->
+                                    <typedef resource="tasks.properties"/>
+
+                                    <property name="cobertura.datafile" value="${project.build.directory}/cobertura.ser"/>
+                                    <property name="source.directory" value="${project.build.sourceDirectory}"/>
+                                    <property name="cobertura.report.directory" value="${project.reporting.outputDirectory}/cobertura"/>
+
+                                    <delete dir="${cobertura.report.directory}"/>
+                                    <cobertura-report format="html" destdir="${cobertura.report.directory}"
+                                                      srcdir="${source.directory}" datafile="${cobertura.datafile}"/>
+                                </target>
+                            </configuration>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <!--
+                            Sadly there is no easy way to execute plugin in parent module after all the children have ben build
+                            so bind this execution to generate aggregate report to the last child module
+                            -->
+                            <id>cobertura-aggregate-report</id>
+                            <configuration>
+                                <target name="cobertura-aggregate-report" unless="skipTests"
+                                        description="Generate aggregated html report to highlight test coverage">
+                                    <!-- Load Cobertura Tasks -->
+                                    <typedef resource="tasks.properties"/>
+
+                                    <property name="parent.directory" value=".."/>
+                                    <property name="cobertura.report.directory" value="${parent.directory}/target/site/cobertura"/>
+                                    <tempfile property="cobertura.merged.datafile" destdir="${java.io.tmpdir}" suffix=".ser" deleteonexit="true"/>
+
+                                    <delete dir="${cobertura.report.directory}"/>
+                                    <cobertura-merge datafile="${cobertura.merged.datafile}">
+                                        <fileset dir="${parent.directory}" includes="**/target/cobertura.ser"/>
+                                    </cobertura-merge>
+                                    <cobertura-report format="html" destdir="${cobertura.report.directory}" datafile="${cobertura.merged.datafile}">
+                                        <fileset dir="${parent.directory}/simple-order-system-contract/src/main/java"/>
+                                    </cobertura-report>
+                                </target>
+                            </configuration>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.sourceforge.cobertura</groupId>
+                            <artifactId>cobertura</artifactId>
+                            <version>${cobertura.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <!-- QA configuration -->
                 <plugin>
@@ -250,6 +356,21 @@
                             <report>cim</report>
                             <report>dependency-management</report>
                             <report>plugins</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <inherited>false</inherited>
+                <configuration>
+                    <linkXRef>false</linkXRef>
+                    <aggregate>true</aggregate>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report-only</report>
                         </reports>
                     </reportSet>
                 </reportSets>
@@ -420,6 +541,12 @@
                 <version>${springframework.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>net.sourceforge.cobertura</groupId>
+                <artifactId>cobertura</artifactId>
+                <version>${cobertura.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -454,6 +581,7 @@
         <hamcrest-core.version>1.3</hamcrest-core.version>
         <mockito-core.version>1.9.5</mockito-core.version>
         <bean-matchers.version>0.8.1</bean-matchers.version>
+        <cobertura.version>2.0.3</cobertura.version>
     </properties>
 
 </project>
