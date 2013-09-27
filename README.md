@@ -6,13 +6,13 @@ Project Details
 ===============
 - Model :
 
-* User     : id, email, password, first_name, last_name
+    * User     : id, email, password, first_name, last_name
 
-* Product  : id, name, description, date_created, last_modified, status, cost
+    * Product  : id, name, description, date_created, last_modified, status, cost
 
-* Customer : id, first name, last name, email, address, date_created, last_modified, status
+    * Customer : id, first name, last name, email, address, date_created, last_modified, status
 
-* Order    : id, customer id, [product id, quantity]+, date_created, last_modified, status
+    * Order    : id, customer id, [product id, quantity]+, date_created, last_modified, status
 
 - Service urls :
 
