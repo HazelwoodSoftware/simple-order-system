@@ -81,6 +81,7 @@
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <linkXRef>false</linkXRef>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     <configLocation>au/id/hazelwood/sos/checkstyle-config.xml</configLocation>
                     <headerLocation>au/id/hazelwood/sos/checkstyle-header.txt</headerLocation>
                     <suppressionsLocation>${basedir}/build-config/checkstyle-suppressions.xml</suppressionsLocation>
@@ -98,6 +99,11 @@
                 <artifactId>maven-pmd-plugin</artifactId>
                 <configuration>
                     <linkXRef>false</linkXRef>
+                    <printFailingErrors>true</printFailingErrors>
+                    <includeTests>true</includeTests>
+                    <rulesets>
+                        <ruleset>/au/id/hazelwood/sos/pmd-ruleset.xml</ruleset>
+                    </rulesets>
                 </configuration>
                 <reportSets>
                     <reportSet>

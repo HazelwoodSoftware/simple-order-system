@@ -5,14 +5,18 @@
     <allow pkg="java"/>
     <allow pkg="javax"/>
 
+    <allow pkg="com.google.common"/>
     <allow pkg="org.apache.commons.lang"/>
 
     <allow class="org.slf4j.Logger"/>
     <allow class="org.slf4j.LoggerFactory"/>
 
     <!-- Test imports -->
+    <allow pkg="com.google.code.beanmatchers.BeanMatchers"/>
     <allow pkg="org.hamcrest.CoreMatchers"/>
     <allow pkg="org.hamcrest.MatcherAssert"/>
+    <allow pkg="org.springframework.beans"/>
+    <allow pkg="org.springframework.test"/>
     <!-- Force use of hamcrest assert not junit asserts so only junit annotations allowed -->
     <allow class="org.junit.BeforeClass"/>
     <allow class="org.junit.AfterClass"/>
