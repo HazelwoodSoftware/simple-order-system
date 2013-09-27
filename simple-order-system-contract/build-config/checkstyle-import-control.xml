@@ -10,7 +10,17 @@
     <allow class="org.slf4j.Logger"/>
     <allow class="org.slf4j.LoggerFactory"/>
 
-    <allow pkg="org.junit"/>
+    <!-- Test imports -->
+    <allow pkg="org.hamcrest.CoreMatchers"/>
+    <allow pkg="org.hamcrest.MatcherAssert"/>
+    <!-- Force use of hamcrest assert not junit asserts so only junit annotations allowed -->
+    <allow class="org.junit.BeforeClass"/>
+    <allow class="org.junit.AfterClass"/>
+    <allow class="org.junit.Before"/>
+    <allow class="org.junit.After"/>
+    <allow class="org.junit.Test"/>
+    <allow class="org.junit.Ignore"/>
+    <allow class="org.junit.runner.RunWith"/>
 
     <subpackage name="model">
 

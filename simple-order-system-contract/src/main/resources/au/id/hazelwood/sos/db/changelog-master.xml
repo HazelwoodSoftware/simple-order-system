@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one or more
+  ~ contributor license agreements.  See the NOTICE file distributed with
+  ~ this work for additional information regarding copyright ownership.
+  ~ The ASF licenses this file to You under the Apache License, Version 2.0
+  ~ (the "License"); you may not use this file except in compliance with
+  ~ the License.  You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="0.1.0.1" author="Ricky Hazelwood" context="production">
+        <comment>Create initial users table</comment>
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="email" type="varchar(254)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uq_users_email"/>
+            </column>
+            <column name="password" type="varchar(254)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(20)"/>
+            <column name="last_name" type="varchar(20)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="0.1.0.2" author="Ricky Hazelwood" context="sample">
+        <comment>Seed sample users</comment>
+        <insert tableName="users">
+            <column name="email" value="admin@hazelwood.id.au"/>
+            <column name="password" value="password"/>
+            <column name="first_name" value=""/>
+            <column name="last_name" value="Admin"/>
+        </insert>
+        <insert tableName="users">
+            <column name="email" value="ricky@hazelwood.id.au"/>
+            <column name="password" value="password"/>
+            <column name="first_name" value="Ricky"/>
+            <column name="last_name" value="Hazelwood"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -21,11 +21,15 @@
 
     <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{ISO8601}] [%t] [%x] %-5p %c{1} - %m %n"/>
+            <param name="ConversionPattern" value="[%d{ISO8601}] [%t] [%x] %-5p %c%n%m%n"/>
         </layout>
     </appender>
 
     <logger name="org.springframework">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="org.hibernate">
         <level value="INFO"/>
     </logger>
 
