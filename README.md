@@ -6,6 +6,7 @@ Simple product order system to demo restful api, spring-security, spring-data, h
 Project Details
 ===============
 - Model :
+
 -- User     : id, email, password, first_name, last_name
 -- Product  : id, name, description, date_created, last_modified, status, cost
 -- Customer : id, first name, last name, email, address, date_created, last_modified, status
