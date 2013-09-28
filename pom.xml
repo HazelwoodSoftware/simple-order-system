@@ -290,8 +290,33 @@
                         <printFailingErrors>true</printFailingErrors>
                         <includeTests>true</includeTests>
                         <rulesets>
-                            <ruleset>/au/id/hazelwood/sos/pmd-ruleset.xml</ruleset>
+                            <ruleset>au/id/hazelwood/sos/pmd-ruleset.xml</ruleset>
                         </rulesets>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>2.5.2</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>au.id.hazelwood</groupId>
+                            <artifactId>simple-order-system-build-config</artifactId>
+                            <version>${project.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <effort>Max</effort>
+                        <includeTests>true</includeTests>
+                        <threshold>Low</threshold>
+                        <excludeFilterFile>au/id/hazelwood/sos/findbugs-exclude-filter.xml</excludeFilterFile>
                     </configuration>
                     <executions>
                         <execution>

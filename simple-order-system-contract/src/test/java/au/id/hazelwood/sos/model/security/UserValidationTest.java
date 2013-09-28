@@ -125,13 +125,15 @@ public class UserValidationTest
 
     private List<String> getViolations(Class<?> beanType, String property, String value)
     {
-        return Lists.transform(new ArrayList<>(validator.validateValue(beanType, property, value)), new Function<ConstraintViolation<?>, String>()
+        return Lists.transform(new ArrayList<>(validator.validateValue(beanType, property, value)), new ConstraintViolationMessageFunction());
+    }
+
+    private static class ConstraintViolationMessageFunction implements Function<ConstraintViolation<?>, String>
+    {
+        @Override
+        public String apply(ConstraintViolation<?> violation)
         {
-            @Override
-            public String apply(ConstraintViolation<?> violation)
-            {
-                return violation.getMessage();
-            }
-        });
+            return violation == null ? null : violation.getMessage();
+        }
     }
 }

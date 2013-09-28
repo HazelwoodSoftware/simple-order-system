@@ -36,6 +36,7 @@
                 <item name="Coverage Report" href="cobertura-report.html"/>
                 <item name="Checkstyle Report" href="checkstyle.html"/>
                 <item name="PMD Report" href="pmd.html"/>
+                <item name="Findbugs Report" href="findbugs.html"/>
                 <item name="JDepends Report" href="jdepend-report.html"/>
             </item>
         </menu>
