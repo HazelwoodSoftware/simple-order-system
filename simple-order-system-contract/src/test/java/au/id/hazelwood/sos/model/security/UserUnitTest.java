@@ -16,7 +16,9 @@
  */
 package au.id.hazelwood.sos.model.security;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanConstructor;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanEqualsExcluding;
@@ -26,6 +28,7 @@ import static com.google.code.beanmatchers.BeanMatchers.hasValidGettersAndSetter
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@FixMethodOrder(MethodSorters.JVM)
 public class UserUnitTest
 {
     @Test

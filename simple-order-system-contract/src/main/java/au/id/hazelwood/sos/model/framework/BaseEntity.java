@@ -28,6 +28,8 @@ import java.io.Serializable;
 
 /**
  * Base class for Model objects. Implements equals, hashCode and toString using reflection.
+ *
+ * @author Ricky Hazelwood
  */
 @MappedSuperclass
 @SuppressWarnings("UnusedDeclaration")

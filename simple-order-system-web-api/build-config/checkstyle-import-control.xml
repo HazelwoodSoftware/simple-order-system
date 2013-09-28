@@ -2,20 +2,26 @@
 <!DOCTYPE import-control PUBLIC "-//Puppy Crawl//DTD Import Control 1.0//EN" "http://www.puppycrawl.com/dtds/import_control_1_0.dtd">
 
 <import-control pkg="au.id.hazelwood.sos">
+    <!-- Java& J2EE -->
     <allow pkg="java"/>
     <allow pkg="javax"/>
 
+    <!-- Apache/Google commons -->
     <allow pkg="com.google.common"/>
     <allow pkg="org.apache.commons.lang"/>
 
+    <!-- Logging -->
     <allow class="org.slf4j.Logger"/>
     <allow class="org.slf4j.LoggerFactory"/>
+
+    <!-- Spring -->
+    <allow class="org.springframework.beans.factory.annotation.Autowired"/>
+    <allow class="org.springframework.transaction.annotation.Transactional"/>
 
     <!-- Test imports -->
     <allow pkg="com.google.code.beanmatchers.BeanMatchers"/>
     <allow pkg="org.hamcrest.CoreMatchers"/>
     <allow pkg="org.hamcrest.MatcherAssert"/>
-    <allow pkg="org.springframework.beans"/>
     <allow pkg="org.springframework.test"/>
     <!-- Force use of hamcrest assert not junit asserts so only junit annotations allowed -->
     <allow class="org.junit.BeforeClass"/>
@@ -24,12 +30,15 @@
     <allow class="org.junit.After"/>
     <allow class="org.junit.Test"/>
     <allow class="org.junit.Ignore"/>
+    <allow class="org.junit.FixMethodOrder"/>
     <allow class="org.junit.runner.RunWith"/>
+    <allow class="org.junit.runners.MethodSorters"/>
 
-    <subpackage name="model">
+    <subpackage name="repository">
+        <allow class="org.springframework.data.jpa.repository.JpaRepository"/>
 
         <subpackage name="security">
-            <allow pkg="au.id.hazelwood.sos.model.framework"/>
+            <allow pkg="au.id.hazelwood.sos.model.security"/>
         </subpackage>
     </subpackage>
 

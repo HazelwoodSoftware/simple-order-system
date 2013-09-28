@@ -269,6 +269,7 @@
     <module name="Header">
         <property name="headerFile" value="${checkstyle.header.file}"/>
         <property name="ignoreLines" value="1, 2, 4, 8, 9"/>
+        <property name="fileExtensions" value="java"/>
     </module>
     <module name="StrictDuplicateCode">
         <property name="min" value="50"/>

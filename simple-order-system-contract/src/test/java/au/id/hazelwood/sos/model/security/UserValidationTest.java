@@ -19,8 +19,10 @@ package au.id.hazelwood.sos.model.security;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang.StringUtils;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -34,6 +36,7 @@ import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@FixMethodOrder(MethodSorters.JVM)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/application-context-test-validation.xml")
 public class UserValidationTest

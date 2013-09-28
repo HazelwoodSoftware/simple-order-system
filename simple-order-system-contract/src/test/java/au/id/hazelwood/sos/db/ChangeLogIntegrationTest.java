@@ -16,8 +16,10 @@
  */
 package au.id.hazelwood.sos.db;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -26,6 +28,7 @@ import javax.annotation.Resource;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@FixMethodOrder(MethodSorters.JVM)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/application-context-test-changelog.xml"})
 public class ChangeLogIntegrationTest
