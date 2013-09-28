@@ -20,8 +20,8 @@
 
     <!-- Test imports -->
     <allow pkg="com.google.code.beanmatchers.BeanMatchers"/>
-    <allow pkg="org.hamcrest.CoreMatchers"/>
     <allow pkg="org.hamcrest.MatcherAssert"/>
+    <allow pkg="org.hamcrest.Matchers"/>
     <allow pkg="org.springframework.test"/>
     <!-- Force use of hamcrest assert not junit asserts so only junit annotations allowed -->
     <allow class="org.junit.BeforeClass"/>

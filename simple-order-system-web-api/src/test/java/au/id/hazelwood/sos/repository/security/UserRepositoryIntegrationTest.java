@@ -30,13 +30,15 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.Arrays;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 
 @FixMethodOrder(MethodSorters.JVM)
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/application-context-service.xml"})
+@ContextConfiguration(locations = {"/application-context-test-service.xml"})
 @TransactionConfiguration
 @Transactional
 public class UserRepositoryIntegrationTest
@@ -45,22 +47,24 @@ public class UserRepositoryIntegrationTest
     private UserRepository userRepository;
 
     @Test
-    public void testDefaultRepositoryState() throws Exception
+    public void testSampleUsersLoaded() throws Exception
     {
-        assertThat(userRepository.count(), is(0L));
-        assertThat(userRepository.findAll().isEmpty(), is(true));
+        assertThat(userRepository.count(), is(2L));
     }
 
     @Test
     public void testCreateAndDelete() throws Exception
     {
+        userRepository.deleteAll();
+        assertThat(userRepository.count(), is(0L));
+
         User one = new User("one@hazelwood.id.au", "password", "User", "One");
-        User two = new User("two@hazelwood.id.au", "password", "User", "Two");
-        User three = new User("three@hazelwood.id.au", "password", "User", "Three");
         userRepository.save(one);
         assertThat(userRepository.count(), is(1L));
         assertThat(userRepository.exists(one.getId()), is(true));
 
+        User two = new User("two@hazelwood.id.au", "password", "User", "Two");
+        User three = new User("three@hazelwood.id.au", "password", "User", "Three");
         userRepository.save(Arrays.asList(two, three));
         assertThat(userRepository.count(), is(3L));
 
@@ -75,13 +79,9 @@ public class UserRepositoryIntegrationTest
     @Test
     public void testFindOneByEmail() throws Exception
     {
-        User one = new User("one@hazelwood.id.au", "password", "User", "One");
-        User two = new User("two@hazelwood.id.au", "password", "User", "Two");
-
-        userRepository.save(Arrays.asList(one, two));
-        assertThat(userRepository.findOneByEmail("one@hazelwood.id.au"), is(one));
-        assertThat(userRepository.findOneByEmail("two@hazelwood.id.au"), is(two));
-        assertThat(userRepository.findOneByEmail(null), nullValue());
         assertThat(userRepository.findOneByEmail(""), nullValue());
+        assertThat(userRepository.findOneByEmail(null), nullValue());
+        assertThat(userRepository.findOneByEmail("admin@hazelwood.id.au"), hasProperty("email", equalTo("admin@hazelwood.id.au")));
+        assertThat(userRepository.findOneByEmail("ricky@hazelwood.id.au"), hasProperty("email", equalTo("ricky@hazelwood.id.au")));
     }
 }

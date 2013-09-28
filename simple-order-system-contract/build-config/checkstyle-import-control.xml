@@ -16,8 +16,8 @@
 
     <!-- Test imports -->
     <allow pkg="com.google.code.beanmatchers.BeanMatchers"/>
-    <allow pkg="org.hamcrest.CoreMatchers"/>
     <allow pkg="org.hamcrest.MatcherAssert"/>
+    <allow pkg="org.hamcrest.Matchers"/>
     <allow pkg="org.springframework.beans"/>
     <allow pkg="org.springframework.test"/>
     <allow class="org.springframework.beans.factory.annotation.Autowired"/>
