@@ -221,7 +221,7 @@
                                     <cobertura-report format="html" destdir="${cobertura.report.directory}" datafile="${cobertura.merged.datafile}">
                                         <fileset dir="${parent.directory}/simple-order-system-contract/src/main/java"/>
                                         <fileset dir="${parent.directory}/simple-order-system-core/src/main/java"/>
-                                        <fileset dir="${parent.directory}/simple-order-system-web-api/src/main/java"/>
+                                        <!--<fileset dir="${parent.directory}/simple-order-system-web-api/src/main/java"/>-->
                                     </cobertura-report>
                                 </target>
                             </configuration>

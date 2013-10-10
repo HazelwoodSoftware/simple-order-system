@@ -22,6 +22,7 @@
     <allow pkg="com.google.code.beanmatchers.BeanMatchers"/>
     <allow pkg="org.hamcrest.MatcherAssert"/>
     <allow pkg="org.hamcrest.Matchers"/>
+    <allow pkg="org.mockito"/>
     <allow pkg="org.springframework.test"/>
     <!-- Force use of hamcrest assert not junit asserts so only junit annotations allowed -->
     <allow class="org.junit.BeforeClass"/>
@@ -34,11 +35,33 @@
     <allow class="org.junit.runner.RunWith"/>
     <allow class="org.junit.runners.MethodSorters"/>
 
+    <subpackage name="dto">
+
+        <subpackage name="security">
+            <allow pkg="au.id.hazelwood.sos.dto.framework"/>
+        </subpackage>
+    </subpackage>
+
     <subpackage name="repository">
         <allow class="org.springframework.data.jpa.repository.JpaRepository"/>
 
         <subpackage name="security">
             <allow pkg="au.id.hazelwood.sos.model.security"/>
+        </subpackage>
+    </subpackage>
+
+    <subpackage name="service">
+        <allow class="org.springframework.stereotype.Service"/>
+        <allow class="org.springframework.stereotype.Component"/>
+
+        <subpackage name="security">
+            <allow pkg="au.id.hazelwood.sos.model.security"/>
+            <allow pkg="au.id.hazelwood.sos.dto.security"/>
+            <allow pkg="au.id.hazelwood.sos.repository.security"/>
+
+            <subpackage name="impl">
+                <allow pkg="au.id.hazelwood.sos.service.security"/>
+            </subpackage>
         </subpackage>
     </subpackage>
 
