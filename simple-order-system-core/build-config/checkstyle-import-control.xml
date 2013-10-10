@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE import-control PUBLIC "-//Puppy Crawl//DTD Import Control 1.0//EN" "http://www.puppycrawl.com/dtds/import_control_1_0.dtd">
 
-<import-control pkg="au.id.hazelwood.sos.web">
+<import-control pkg="au.id.hazelwood.sos">
     <!-- Java& J2EE -->
     <allow pkg="java"/>
     <allow pkg="javax"/>
@@ -33,5 +33,13 @@
     <allow class="org.junit.FixMethodOrder"/>
     <allow class="org.junit.runner.RunWith"/>
     <allow class="org.junit.runners.MethodSorters"/>
+
+    <subpackage name="repository">
+        <allow class="org.springframework.data.jpa.repository.JpaRepository"/>
+
+        <subpackage name="security">
+            <allow pkg="au.id.hazelwood.sos.model.security"/>
+        </subpackage>
+    </subpackage>
 
 </import-control>

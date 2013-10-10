@@ -220,6 +220,8 @@
                                     </cobertura-merge>
                                     <cobertura-report format="html" destdir="${cobertura.report.directory}" datafile="${cobertura.merged.datafile}">
                                         <fileset dir="${parent.directory}/simple-order-system-contract/src/main/java"/>
+                                        <fileset dir="${parent.directory}/simple-order-system-core/src/main/java"/>
+                                        <fileset dir="${parent.directory}/simple-order-system-web-api/src/main/java"/>
                                     </cobertura-report>
                                 </target>
                             </configuration>
@@ -435,6 +437,11 @@
             </dependency>
             <dependency>
                 <groupId>au.id.hazelwood</groupId>
+                <artifactId>simple-order-system-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>au.id.hazelwood</groupId>
                 <artifactId>simple-order-system-web-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -611,6 +618,7 @@
     <modules>
         <module>simple-order-system-build-config</module>
         <module>simple-order-system-contract</module>
+        <module>simple-order-system-core</module>
         <module>simple-order-system-web-api</module>
     </modules>
 

@@ -62,6 +62,4 @@
     <jpa:repositories base-package="au.id.hazelwood.sos.repository"/>
     <!-- Service -->
     <context:component-scan base-package="au.id.hazelwood.sos.service"/>
-    <!-- Controllers -->
-    <context:component-scan base-package="au.id.hazelwood.sos.web.controller"/>
 </beans>

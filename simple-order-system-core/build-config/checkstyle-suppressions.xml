@@ -15,11 +15,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<document>
-    <properties>
-        <title>Coverage Report</title>
-    </properties>
-    <body>
-        <iframe src="cobertura/index.html" name="content" width="95%" height="595" marginwidth="0" marginheight="0" frameborder="1"/>
-    </body>
-</document>
+<!DOCTYPE suppressions PUBLIC "-//Puppy Crawl//DTD Suppressions 1.1//EN" "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+<suppressions>
+</suppressions>
