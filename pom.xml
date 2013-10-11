@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--suppress MavenModelInspection -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -542,6 +542,12 @@
                 <artifactId>liquibase-core</artifactId>
                 <version>${liquibase-core.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.mattbertolini</groupId>
+                <artifactId>liquibase-slf4j</artifactId>
+                <version>${liquibase-slf4j.version}</version>
+                <scope>runtime</scope>
+            </dependency>
             <!-- JDBC Drivers -->
             <dependency>
                 <groupId>org.apache.derby</groupId>
@@ -640,7 +646,8 @@
         <!-- JDBC Drivers -->
         <derby.version>10.10.1.1</derby.version>
         <!-- DB Management -->
-        <liquibase-core.version>3.0.4</liquibase-core.version>
+        <liquibase-core.version>3.0.6</liquibase-core.version>
+        <liquibase-slf4j.version>1.2.0</liquibase-slf4j.version>
         <!-- Logging -->
         <slf4j.version>1.7.5</slf4j.version>
         <log4j.version>1.2.17</log4j.version>

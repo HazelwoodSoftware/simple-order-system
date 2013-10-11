@@ -18,6 +18,16 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <include file="au/id/hazelwood/sos/db/changelog-0.1.xml"/>
+    <include file="au/id/hazelwood/sos/db/changelog-master.xml"/>
+
+    <changeSet id="1" author="Ricky Hazelwood" context="testing">
+        <comment>Seed test users</comment>
+        <loadData tableName="users" encoding="UTF-8" file="au/id/hazelwood/sos/db/data/users.csv">
+            <column name="id" header="id" type="NUMERIC"/>
+            <column name="email" header="email" type="STRING"/>
+            <column name="first_name" header="first_name" type="STRING"/>
+            <column name="last_name" header="last_name" type="STRING"/>
+        </loadData>
+    </changeSet>
 
 </databaseChangeLog>

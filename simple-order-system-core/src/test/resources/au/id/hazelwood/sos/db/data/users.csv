@@ -1,0 +1,11 @@
+id,email,password,first_name,last_name
+01,test-01@hazelwood.id.au,password,Test,One
+02,test-02@hazelwood.id.au,password,Test,Two
+03,test-03@hazelwood.id.au,password,Test,Three
+04,test-04@hazelwood.id.au,password,Test,Four
+05,test-05@hazelwood.id.au,password,Test,Five
+06,test-06@hazelwood.id.au,password,Test,Six
+07,test-07@hazelwood.id.au,password,Test,Seven
+08,test-08@hazelwood.id.au,password,Test,Eight
+09,test-09@hazelwood.id.au,password,Test,Nine
+10,test-10@hazelwood.id.au,password,Test,Ten

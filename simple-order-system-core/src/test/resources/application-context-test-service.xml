@@ -38,7 +38,7 @@
     <!-- Override liquibase to set system property first and make sample data available for tests -->
     <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase" depends-on="addSystemProperty">
         <property name="dataSource" ref="dataSource"/>
-        <property name="changeLog" value="classpath:au/id/hazelwood/sos/db/changelog-master.xml"/>
-        <property name="contexts" value="production,sample"/>
+        <property name="changeLog" value="classpath:au/id/hazelwood/sos/db/changelog-test.xml"/>
+        <property name="contexts" value="production,testing"/>
     </bean>
 </beans>

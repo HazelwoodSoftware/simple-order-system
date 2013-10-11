@@ -46,7 +46,7 @@ public class UserServiceIntegrationTest
     @Test
     public void testFindAllUsers() throws Exception
     {
-        assertThat(userService.findAllUsers().size(), is(2));
+        assertThat(userService.findAllUsers().size(), is(10));
     }
 
     @Test
@@ -54,8 +54,7 @@ public class UserServiceIntegrationTest
     {
         assertThat(userService.findUserByEmail(""), nullValue());
         assertThat(userService.findUserByEmail(null), nullValue());
-        assertThat(userService.findUserByEmail("admin@hazelwood.id.au"), hasProperty("email", equalTo("admin@hazelwood.id.au")));
-        assertThat(userService.findUserByEmail("ricky@hazelwood.id.au"), hasProperty("email", equalTo("ricky@hazelwood.id.au")));
+        assertThat(userService.findUserByEmail("test-01@hazelwood.id.au"), hasProperty("id", equalTo(1L)));
 
     }
 }

@@ -47,9 +47,9 @@ public class UserRepositoryIntegrationTest
     private UserRepository userRepository;
 
     @Test
-    public void testSampleUsersLoaded() throws Exception
+    public void testUsersLoaded() throws Exception
     {
-        assertThat(userRepository.count(), is(2L));
+        assertThat(userRepository.count(), is(10L));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class UserRepositoryIntegrationTest
     {
         assertThat(userRepository.findOneByEmail(""), nullValue());
         assertThat(userRepository.findOneByEmail(null), nullValue());
-        assertThat(userRepository.findOneByEmail("admin@hazelwood.id.au"), hasProperty("email", equalTo("admin@hazelwood.id.au")));
-        assertThat(userRepository.findOneByEmail("ricky@hazelwood.id.au"), hasProperty("email", equalTo("ricky@hazelwood.id.au")));
+        assertThat(userRepository.findOneByEmail("test-01@hazelwood.id.au"), hasProperty("id", equalTo(1L)));
+        assertThat(userRepository.findOneByEmail("test-10@hazelwood.id.au"), hasProperty("id", equalTo(10L)));
     }
 }
