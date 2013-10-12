@@ -15,13 +15,13 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
@@ -36,7 +36,7 @@
     <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
         <property name="dataSource" ref="dataSource"/>
         <property name="changeLog" value="classpath:au/id/hazelwood/sos/db/changelog-master.xml"/>
-        <property name="contexts" value="production"/>
+        <property name="contexts" value="production,sample"/>
     </bean>
 
     <!-- Entity Manager -->
@@ -58,8 +58,10 @@
 
     <!-- Transaction Support -->
     <tx:annotation-driven/>
+
     <!-- Repository -->
     <jpa:repositories base-package="au.id.hazelwood.sos.repository"/>
+
     <!-- Service -->
     <context:component-scan base-package="au.id.hazelwood.sos.service">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>

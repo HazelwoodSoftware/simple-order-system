@@ -15,8 +15,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<ruleset xmlns="http://pmd.sourceforge.net/ruleset/2.0.0" name="Hazelwood Ruleset"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0" name="Hazelwood Ruleset"
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
     <!--
       Customized PMD ruleset for Maven, see [0] for more information

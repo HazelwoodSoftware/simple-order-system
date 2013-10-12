@@ -17,9 +17,15 @@
   -->
 <FindBugsFilter>
 
-  <!-- Disable check for serial version id -->
-  <Match>
-    <Bug pattern="SE_NO_SERIALVERSIONID" />
-  </Match>
+    <!-- Disable check for serial version id -->
+    <Match>
+        <Bug pattern="SE_NO_SERIALVERSIONID"/>
+    </Match>
+
+    <!-- Disable check for field not initialized in constructors for tests -->
+    <Match>
+        <Class name="~.*\.*Test" />
+        <Bug pattern="UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR"/>
+    </Match>
 
 </FindBugsFilter>

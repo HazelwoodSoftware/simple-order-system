@@ -15,9 +15,9 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
@@ -37,7 +37,7 @@
 
     <jdbc:embedded-database id="dataSource" type="DERBY"/>
 
-    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase" depends-on="addSystemProperty">
         <property name="dataSource" ref="dataSource"/>
         <property name="changeLog" value="classpath:au/id/hazelwood/sos/db/changelog-master.xml"/>
         <property name="contexts" value="production,sample"/>

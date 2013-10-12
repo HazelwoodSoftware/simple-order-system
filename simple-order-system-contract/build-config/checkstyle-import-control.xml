@@ -34,7 +34,7 @@
 
     <subpackage name="model">
 
-        <subpackage name="security">
+        <subpackage name="user">
             <allow pkg="au.id.hazelwood.sos.model.framework"/>
         </subpackage>
     </subpackage>

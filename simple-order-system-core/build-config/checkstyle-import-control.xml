@@ -37,7 +37,7 @@
 
     <subpackage name="dto">
 
-        <subpackage name="security">
+        <subpackage name="user">
             <allow pkg="au.id.hazelwood.sos.dto.framework"/>
         </subpackage>
     </subpackage>
@@ -45,8 +45,8 @@
     <subpackage name="repository">
         <allow class="org.springframework.data.jpa.repository.JpaRepository"/>
 
-        <subpackage name="security">
-            <allow pkg="au.id.hazelwood.sos.model.security"/>
+        <subpackage name="user">
+            <allow pkg="au.id.hazelwood.sos.model.user"/>
         </subpackage>
     </subpackage>
 
@@ -54,13 +54,13 @@
         <allow class="org.springframework.stereotype.Service"/>
         <allow class="org.springframework.stereotype.Component"/>
 
-        <subpackage name="security">
-            <allow pkg="au.id.hazelwood.sos.model.security"/>
-            <allow pkg="au.id.hazelwood.sos.dto.security"/>
-            <allow pkg="au.id.hazelwood.sos.repository.security"/>
+        <subpackage name="user">
+            <allow pkg="au.id.hazelwood.sos.model.user"/>
+            <allow pkg="au.id.hazelwood.sos.dto.user"/>
+            <allow pkg="au.id.hazelwood.sos.repository.user"/>
 
             <subpackage name="impl">
-                <allow pkg="au.id.hazelwood.sos.service.security"/>
+                <allow pkg="au.id.hazelwood.sos.service.user"/>
             </subpackage>
         </subpackage>
     </subpackage>

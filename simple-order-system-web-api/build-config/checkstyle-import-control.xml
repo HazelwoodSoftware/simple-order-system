@@ -16,12 +16,12 @@
 
     <!-- Spring -->
     <allow class="org.springframework.beans.factory.annotation.Autowired"/>
-    <allow class="org.springframework.transaction.annotation.Transactional"/>
 
     <!-- Test imports -->
     <allow pkg="com.google.code.beanmatchers.BeanMatchers"/>
     <allow pkg="org.hamcrest.MatcherAssert"/>
     <allow pkg="org.hamcrest.Matchers"/>
+    <allow pkg="org.mockito"/>
     <allow pkg="org.springframework.test"/>
     <!-- Force use of hamcrest assert not junit asserts so only junit annotations allowed -->
     <allow class="org.junit.BeforeClass"/>
@@ -33,5 +33,23 @@
     <allow class="org.junit.FixMethodOrder"/>
     <allow class="org.junit.runner.RunWith"/>
     <allow class="org.junit.runners.MethodSorters"/>
+
+    <subpackage name="controller">
+        <allow pkg="org.springframework.web.bind.annotation"/>
+        <allow class="org.springframework.stereotype.Controller"/>
+
+        <subpackage name="framework">
+            <allow pkg="org.springframework.http"/>
+            <allow pkg="au.id.hazelwood.sos.web.exception"/>
+            <allow class="org.springframework.web.context.request.WebRequest"/>
+            <allow class="org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler"/>
+        </subpackage>
+
+        <subpackage name="user">
+            <allow pkg="au.id.hazelwood.sos.dto.user"/>
+            <allow pkg="au.id.hazelwood.sos.service.user"/>
+            <allow pkg="au.id.hazelwood.sos.web.exception"/>
+        </subpackage>
+    </subpackage>
 
 </import-control>

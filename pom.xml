@@ -367,6 +367,49 @@
                         <developmentVersion>0.2.0-SNAPSHOT</developmentVersion>
                     </configuration>
                 </plugin>
+                <!-- Web Container Plugin -->
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>9.1.0.RC0</version>
+                    <configuration>
+                        <contextPath>/</contextPath>
+                        <scanIntervalSeconds>5</scanIntervalSeconds>
+                        <systemProperties>
+                            <systemProperty>
+                                <name>derby.system.home</name>
+                                <value>${basedir}/target/derby</value>
+                            </systemProperty>
+                        </systemProperties>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-api</artifactId>
+                            <version>${slf4j.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>jcl-over-slf4j</artifactId>
+                            <version>${slf4j.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-log4j12</artifactId>
+                            <version>${slf4j.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>log4j</groupId>
+                            <artifactId>log4j</artifactId>
+                            <version>${log4j.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.derby</groupId>
+                            <artifactId>derby</artifactId>
+                            <version>${derby.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -480,6 +523,16 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
                 <version>${spring-core.version}</version>
                 <scope>runtime</scope>
@@ -498,12 +551,6 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring-core.version}</version>
-                <scope>runtime</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${spring-core.version}</version>
                 <scope>test</scope>
@@ -513,6 +560,18 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-jpa</artifactId>
                 <version>${spring-data-jpa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-databind.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.mangofactory</groupId>
+                <artifactId>swagger-springmvc</artifactId>
+                <version>${swagger-springmvc.version}</version>
+                <scope>runtime</scope>
             </dependency>
             <!-- Persistence -->
             <dependency>
@@ -637,6 +696,8 @@
         <!-- Spring -->
         <spring-core.version>3.2.4.RELEASE</spring-core.version>
         <spring-data-jpa.version>1.4.1.RELEASE</spring-data-jpa.version>
+        <jackson-databind.version>2.2.2</jackson-databind.version>
+        <swagger-springmvc.version>0.6.4</swagger-springmvc.version>
         <!-- Persistence -->
         <hibernate-jpa-2.0-api.version>1.0.1.Final</hibernate-jpa-2.0-api.version>
         <hibernate-entitymanager.version>4.1.12.Final</hibernate-entitymanager.version>
